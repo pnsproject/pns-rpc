@@ -1,0 +1,24 @@
+[package]
+name = "rpc-impl"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+sc-client-api = { version = "4.0.0-dev", git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-11' }
+codec = { package = "parity-scale-codec", version = "2.0.0" }
+futures = "0.3.16"
+jsonrpc-core = "18.0.0"
+jsonrpc-core-client = "18.0.0"
+jsonrpc-derive = "18.0.0"
+log = "0.4.8"
+sp-runtime = { version = "4.0.0-dev", git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-11' }
+sp-api = { version = "4.0.0-dev", git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-11' }
+frame-system-rpc-runtime-api = { version = "4.0.0-dev", git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-11' }
+# sp-core = { version = "4.0.0-dev", git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-11' }
+sp-blockchain = { version = "4.0.0-dev", git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-11' }
+# sc-transaction-pool-api = { version = "4.0.0-dev", git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-11' }
+sp-block-builder = { version = "4.0.0-dev", git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-11' }
+# sc-rpc-api = { version = "0.10.0-dev", git = 'https://github.com/paritytech/substrate.git', tag = 'monthly-2021-11' }
+rpc-def = { path = "../rpc-def" }
