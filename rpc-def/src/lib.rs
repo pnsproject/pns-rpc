@@ -19,6 +19,7 @@ sp_api::decl_runtime_apis! {
         fn check_expires_registrable(node: Node) -> bool;
         fn check_expires_renewable(node: Node) -> bool;
         fn check_expires_useable(node: Node) -> bool;
-        fn query_subnode(node:Node,label:Node) -> Node;
+        fn get_duration_by_day(days: u128) -> Duration;
+        fn get_duration_by_year(years: u128) -> Duration;
     }
 }
