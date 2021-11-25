@@ -57,12 +57,6 @@ pub trait PnsApi<BlockHash, AccountId, Node, Balance, Duration> {
 
     #[rpc(name = "pns_checkExpiresUseable")]
     fn check_expires_useable(&self, node: Node, at: Option<BlockHash>) -> FutureResult<bool>;
-
-    #[rpc(name = "pns_getDurationByDay")]
-    fn get_duration_by_day(&self, days: u128) -> FutureResult<Duration>;
-
-    #[rpc(name = "pns_getDurationByYear")]
-    fn get_duration_by_year(&self, years: u128) -> FutureResult<Duration>;
 }
 
 /// Error type of this RPC api.
@@ -288,42 +282,6 @@ where
             let res = api.check_expires_useable(&at, node).map_err(|e| RpcError {
                 code: ErrorCode::ServerError(Error::RuntimeError.into()),
                 message: "Unable to check expires useable.".into(),
-                data: Some(format!("{:?}", e).into()),
-            })?;
-
-            Ok(res)
-        };
-
-        let res = get_res();
-        async move { res }.boxed()
-    }
-
-    fn get_duration_by_day(&self, days: u128) -> FutureResult<Duration> {
-        let get_res = || {
-            let api = self.client.runtime_api();
-            let at = BlockId::hash(self.client.info().best_hash);
-
-            let res = api.get_duration_by_day(&at, days).map_err(|e| RpcError {
-                code: ErrorCode::ServerError(Error::RuntimeError.into()),
-                message: "Unable to get duration by day.".into(),
-                data: Some(format!("{:?}", e).into()),
-            })?;
-
-            Ok(res)
-        };
-
-        let res = get_res();
-        async move { res }.boxed()
-    }
-    
-    fn get_duration_by_year(&self, years: u128) -> FutureResult<Duration> {
-        let get_res = || {
-            let api = self.client.runtime_api();
-            let at = BlockId::hash(self.client.info().best_hash);
-
-            let res = api.get_duration_by_year(&at, years).map_err(|e| RpcError {
-                code: ErrorCode::ServerError(Error::RuntimeError.into()),
-                message: "Unable to get duration by year.".into(),
                 data: Some(format!("{:?}", e).into()),
             })?;
 
